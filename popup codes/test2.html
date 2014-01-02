@@ -1,0 +1,237 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+<title>Iceberg Infotainment</title>
+<!-- 
+    1 ) Reference to the files containing the javascript. 
+    These files must be located on your server. 
+-->
+
+<script type="text/javascript" src="highslide/highslide-with-html.js"></script>
+
+
+<!-- 
+    2) Optionally override the settings defined at the top
+    of the highslide.js file. The parameter hs.graphicsDir is important!
+-->
+
+<script type="text/javascript">    
+    hs.graphicsDir = 'highslide/graphics/';
+    hs.outlineType = 'rounded-white';
+    hs.outlineWhileAnimating = true;
+	hs.wrapperClassName = 'draggable-header';
+</script>
+
+
+<!-- 
+    3) These CSS-styles are necessary for the script to work. You may also put
+    them in an external CSS-file. See the webpage for documentation.
+-->
+
+<style type="text/css">
+* {
+    font-family: Verdana, Helvetica;
+    font-size: 10pt;
+}
+.highslide-html {
+    background-color: white;
+}
+.highslide-html-blur {
+}
+.highslide-html-content {
+	/*position: inherit;*/
+    display: none;
+}
+.highslide-loading {
+    display: block;
+	color: black;
+	font-size: 8pt;
+	font-family: sans-serif;
+	font-weight: bold;
+    text-decoration: none;
+	padding: 2px;
+	border: 1px solid black;
+    background-color: white;
+    
+    padding-left: 22px;
+    background-image: url(highslide/graphics/loader.white.gif);
+    background-repeat: no-repeat;
+    background-position: 3px 1px;
+}
+a.highslide-credits,
+a.highslide-credits i {
+    padding: 2px;
+    color: silver;
+    text-decoration: none;
+	font-size: 10px;
+}
+a.highslide-credits:hover,
+a.highslide-credits:hover i {
+    color: white;
+    background-color: gray;
+}
+
+
+/* Styles for the popup */
+.highslide-wrapper {
+	background-color: white;
+}
+.highslide-wrapper .highslide-html-content {
+    width: 350px;
+	height: 300px;
+    padding: 5px;
+}
+.highslide-wrapper .highslide-header div {
+}
+.highslide-wrapper .highslide-header ul {
+	margin: 0;
+	padding: 0;
+	text-align: right;
+}
+.highslide-wrapper .highslide-header ul li {
+	display: inline;
+	padding-left: 1em;
+}
+.highslide-wrapper .highslide-header ul li.highslide-previous, .highslide-wrapper .highslide-header ul li.highslide-next {
+	display: none;
+}
+.highslide-wrapper .highslide-header a {
+	font-weight: bold;
+	color: gray;
+	text-transform: uppercase;
+	text-decoration: none;
+}
+.highslide-wrapper .highslide-header a:hover {
+	color: black;
+}
+.highslide-wrapper .highslide-header .highslide-move a {
+	cursor: move;
+}
+.highslide-wrapper .highslide-footer {
+	height: 11px;
+}
+.highslide-wrapper .highslide-footer .highslide-resize {
+	float: right;
+	height: 11px;
+	width: 11px;
+	background: url(highslide/graphics/resize.gif);
+}
+.highslide-wrapper .highslide-body {
+}
+.highslide-move {
+    cursor: move;
+}
+.highslide-resize {
+    cursor: nw-resize;
+}
+.highslide-previous {
+    background-image:url(highslide/graphics/prev.gif);
+}
+
+/* These must be the last of the Highslide rules */
+.highslide-display-block {
+    display: block;
+}
+.highslide-display-none {
+    display: none;
+}
+</style>
+
+<style type="text/css">
+<!--
+body {
+	background-color: #FFF;
+}
+#Layer1 {
+	position:absolute;
+	left:514px;
+	top:306px;
+	width:600px;
+	height:500px;
+	z-index:1;
+}
+.style13 {font-size: 10pt; font-family: Arial, Helvetica, sans-serif; color: #FFFFFF; }
+.style19 {
+	color: #FFFFFF;
+	font-family: Arial, Helvetica, sans-serif;
+}
+.style20 {font-family: Arial, Helvetica, sans-serif}
+.style21 {color: #FF3300}
+a:link {
+	color: #D52B0D;
+}
+a:visited {
+	color: #999999;
+}
+-->
+</style>
+
+
+</head>
+
+<body>
+
+<table width="800" height="364" border="0" align="center" cellpadding="0" cellspacing="0">
+  <tr>
+    <td width="800" height="231">&nbsp;</td>
+  </tr>
+  <tr>
+    <td width="800" height="365" valign="top" background="images/reg-background_r2_c1.jpg"><table width="800" height="355" border="0" cellpadding="0" cellspacing="0">
+      <tr>
+      
+              <td align="left">
+                      <div><span class="style21"><a href="#" 
+		class="highslide style20" onclick="return hs.htmlExpand(this, { contentId: 'highslide-html' } )">
+                      Read here!</a> </span></div>
+                    <div class="highslide-html-content" id="highslide-html">
+	<div class="highslide-header">
+		
+		  <div align="center">
+		    <ul>
+            <li class="highslide-previous"><a href="#" title="{hs.lang.previousTitle}" onclick="return hs.previous(this)">
+			<img src="highslide/graphics/prev.gif" /></a></li>
+            <li class="highslide-next">
+				<a href="#" title="{hs.lang.nextTitle}" onclick="return hs.next(this)">
+				<img src="highslide/graphics/next.gif" /></a>
+			</li>
+		      <li class="highslide-move">
+		        <a href="#" onclick="return false"><img src="highslide/graphics/move.gif" /></a> </li>
+		      <li class="highslide-close">
+		        <a href="#" title="{hs.lang.closeTitle}" onclick="return hs.close(this)"><img src="highslide/graphics/close2.gif" /></a> </li>
+          
+		      </ul> 
+		    </div>
+	</div>
+	<div class="highslide-body">
+		<div align="left"><b>ICEBERG INFOTAINMENT<br />
+TERMS & CONDITIONS</b><p>
+		  The following is to be read and agreed before accounts can be created for clients. All our accounts are PRE-PAID service, which means payments must be confirmed before a service is activated / processed. <p>You are not allowed to impersonate other organisation/s or individuals sending anonymous or annoying SMS. We shall not be liable if someone else obtains your account login details to send SMS, please keep your login details in a safe place.<p>
+		  The information we collect is used to improve the content of our web page, used to customize the content and/or layout of our page for each individual visitor, used to notify consumers about updates to our web site, used by us to contact consumers for marketing purposes, disclosed when legally required to do so, at the request of governmental authorities conducting an investigation, to verify or enforce compliance with the policies governing our website and applicable laws or to protect against misuse or unauthorized use of our website, to a successor entity in connection with a corporate merger, consolidation, sale of assets or other corporate change respecting the website.<p>
+		  If you do not want to receive e-mail from us in the future, please let us know by sending us e-mail at the address below or calling us at the telephone number below.<p>
+		  <b>E-mail:</b> info@icebergng.com<br />
+		  <b>Phone:</b> +234 (0)709 0423 736
+
+
+		   </div>
+	</div>
+    <div class="highslide-footer">
+        <div></div>
+    </div>
+</div>                    </td>
+              <td>&nbsp;</td>
+            </tr>
+            
+            <tr>
+      
+              <td align="left">
+                      <div><span class="style21"><a href="2.html" class="highslide style20" onclick="return hs.htmlExpand(this, { objectType: 'ajax'} )" >
+                      Read here!</a> </span></div>
+              </td>
+              <td>&nbsp;</td>
+            </tr>
+          </table>
+               
+   
+</body>
+</html>

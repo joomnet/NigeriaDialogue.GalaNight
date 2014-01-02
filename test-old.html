@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <!--
+
+        NOTE: This page was written as a simple example of using 
+        CSS3 transitions to create a left/right sliding panel 
+        effect. I wouldn't actually recommend writing the JS code 
+        this way - I just didn't want to obscure the lesson with 
+        fancy JavaScript. Luv and kisses - jstark
+
+    -->
+
+    <head>
+        <meta charset="utf-8" />
+        <title>Simple Sliding Example Using CSS3 Transitions</title>
+        <style type="text/css">
+<!--
+body {
+	margin-left: 0px;
+	margin-top: 0px;
+	margin-right: 0px;
+	margin-bottom: 0px;
+	background-color: #000;
+	background-image: url(images/bg2.jpg);
+	background-attachment:fixed;
+}
+body,td,th {
+	font-family: Source Sans Pro, sans-serif;
+	color: #FFF;
+	font-weight: lighter;
+	font-size: 102%;
+}
+a:link {
+	color: #999;
+	text-decoration: none;
+}
+a:visited {
+	text-decoration: none;
+	color: #999;
+}
+a:hover {
+	text-decoration: underline;
+	color: #999;
+}
+a:active {
+	text-decoration: none;
+	color: #999;
+	font-size: 102%;
+}
+.greenheader {
+	font-family: "Source Sans Pro", sans-serif;
+	color: #FFF;
+	font-size: 1.3em;
+	font-weight: bold;
+	font-variant: normal;
+}
+.bigheader {
+	font-size: 1.3em;
+	color: #F0CC31;
+}
+.bigheader2 {
+	font-size: 1.5em;
+	font-weight: lighter;
+}
+.rounded {
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+	background-color: #3E8B5E;
+	//border: thin solid #666;
+}
+.whitetext {
+	font-size: 100%;
+	font-weight: lighter;
+	color: #FFF;
+}
+.rounded1 {	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+	background-color: #262626;
+	//border: thin solid #666;
+}
+.rounded2 {	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+	background-color: #3E8B5E;
+	//border: thin solid #666;
+}
+a.doclink {
+	font-size: 90%;
+	color: #F0CC31;
+}
+.rounded11 {-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+	background-color: #262626;
+	//border: thin solid #666;
+}
+.rounded12 {-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+	background-color: #262626;
+	//border: thin solid #666;
+}
+.footertext {
+	font-size: 12px;
+	color: #FFF;
+}
+-->
+</style>
+<script type="text/javascript">
+<!--
+function MM_preloadImages() { //v3.0
+  var d=document; if(d.images){ if(!d.MM_p) d.MM_p=new Array();
+    var i,j=d.MM_p.length,a=MM_preloadImages.arguments; for(i=0; i<a.length; i++)
+    if (a[i].indexOf("#")!=0){ d.MM_p[j]=new Image; d.MM_p[j++].src=a[i];}}
+}
+function MM_swapImgRestore() { //v3.0
+  var i,x,a=document.MM_sr; for(i=0;a&&i<a.length&&(x=a[i])&&x.oSrc;i++) x.src=x.oSrc;
+}
+function MM_findObj(n, d) { //v4.01
+  var p,i,x;  if(!d) d=document; if((p=n.indexOf("?"))>0&&parent.frames.length) {
+    d=parent.frames[n.substring(p+1)].document; n=n.substring(0,p);}
+  if(!(x=d[n])&&d.all) x=d.all[n]; for (i=0;!x&&i<d.forms.length;i++) x=d.forms[i][n];
+  for(i=0;!x&&d.layers&&i<d.layers.length;i++) x=MM_findObj(n,d.layers[i].document);
+  if(!x && d.getElementById) x=d.getElementById(n); return x;
+}
+
+function MM_swapImage() { //v3.0
+  var i,j=0,x,a=MM_swapImage.arguments; document.MM_sr=new Array; for(i=0;i<(a.length-2);i+=3)
+   if ((x=MM_findObj(a[i]))!=null){document.MM_sr[j++]=x; if(!x.oSrc) x.oSrc=x.src; x.src=a[i+2];}
+}
+//-->
+</script>
+
+<script src="countdown.js" type="text/javascript"></script>
+<script type="text/javascript">
+<!--
+function MM_swapImgRestore() { //v3.0
+  var i,x,a=document.MM_sr; for(i=0;a&&i<a.length&&(x=a[i])&&x.oSrc;i++) x.src=x.oSrc;
+}
+function MM_preloadImages() { //v3.0
+  var d=document; if(d.images){ if(!d.MM_p) d.MM_p=new Array();
+    var i,j=d.MM_p.length,a=MM_preloadImages.arguments; for(i=0; i<a.length; i++)
+    if (a[i].indexOf("#")!=0){ d.MM_p[j]=new Image; d.MM_p[j++].src=a[i];}}
+}
+
+function MM_findObj(n, d) { //v4.01
+  var p,i,x;  if(!d) d=document; if((p=n.indexOf("?"))>0&&parent.frames.length) {
+    d=parent.frames[n.substring(p+1)].document; n=n.substring(0,p);}
+  if(!(x=d[n])&&d.all) x=d.all[n]; for (i=0;!x&&i<d.forms.length;i++) x=d.forms[i][n];
+  for(i=0;!x&&d.layers&&i<d.layers.length;i++) x=MM_findObj(n,d.layers[i].document);
+  if(!x && d.getElementById) x=d.getElementById(n); return x;
+}
+
+function MM_swapImage() { //v3.0
+  var i,j=0,x,a=MM_swapImage.arguments; document.MM_sr=new Array; for(i=0;i<(a.length-2);i+=3)
+   if ((x=MM_findObj(a[i]))!=null){document.MM_sr[j++]=x; if(!x.oSrc) x.oSrc=x.src; x.src=a[i+2];}
+}
+//-->
+</script>
+  
+<style type="text/css">
+<!--
+.rounded13 {-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+	background-color: #262626;
+	//border: thin solid #666;
+}
+.rounded121 {-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+	background-color: #262626;
+	//border: thin solid #666;
+}
+.rounded21 {-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+	background-color: #3E8B5E;
+	//border: thin solid #666;
+}
+#apDiv1 {
+	position:fixed;
+	width:1200px;
+	height:115px;
+	z-index:1;
+	left: 0px;
+	margin-top: 0px;
+}
+-->
+</style>
+		<style>
+
+            /* GENERAL FORMATTING STUFF THAT HAS NOTHING REALLY TO DO WITH SLIDING */
+
+           /* * {
+                color: white;
+                font-family: Arial, "MS Trebuchet", sans-serif;
+                font-size: 22px;
+                font-weight: bold;
+                margin: 0;
+                padding: 0;
+                text-decoration: none;
+              
+            }*/
+            body {
+                background: #000;
+                text-align: center;
+				background:url(images/bg2.jpg);
+				background-attachment:fixed;
+            }
+            body > #container {
+                
+                 height: 600px;
+                margin: 20px auto;
+                position: relative;
+                width: 1200px;
+                /* Uncomment the following line to remove horizontal scroll bars. */
+                overflow-x: hidden;
+            }
+            body > #container > div {
+                
+                height: 400px;
+                opacity: 1;
+                position: absolute;
+                width: 1200px;
+            }
+			
+           /* body > #container > div > h1 {
+                background-image: -webkit-gradient(linear, left top, left bottom, from(#EEE), to(#AAA));
+                padding: 10px;
+            }
+            body > #container > div > p {
+                font-size: 14px;
+                padding: 10px;
+            }
+            body > #container > div > p > a {
+              
+            }
+            
+            /* 
+             * MAGIC TRANSITION STUFF FOLLOWS BELOW
+             */
+            
+            /* Set the initial positions */
+            #home {
+                -webkit-transform: translateX(0);
+            }
+            #settings {
+                -webkit-transform: translateX(200%); overflow:auto;
+            }
+            
+            /* Settings common to both panels */
+            body > #container > div.in, 
+            body > #container > div.out {
+                -webkit-transition-duration: 350ms;
+                -webkit-transition-property: webkitTransform;
+            }
+
+            /* Define the animation names for each possible state */
+            body > #container > div.slide.left.in {
+                -webkit-transform: translateX(0);
+            }
+            body > #container > div.slide.left.out {
+                -webkit-transform: translateX(-200%); 
+            }
+            body > #container > div.slide.right.in {
+                -webkit-transform: translateX(0);
+            }
+            body > #container > div.slide.right.out {
+                -webkit-transform: translateX(200%);
+            }
+            
+        </style>
+        <script>
+            function goTo(targetPanelId) {
+                var home = document.getElementById('home');
+                var settings = document.getElementById('settings');
+                if (targetPanelId === 'settings') {
+                    home.className = 'slide left out';
+                    settings.className = 'slide left in';                    
+                } else {
+                    home.className = 'slide right in';
+                    settings.className = 'slide right out';                    
+                }
+                return false;
+            }
+        </script>
+    </head>
+    <body>
+        <div id="container">
+            <div id="home">    
+              
+                <table  style="width:1200px;" border="0" align="center" cellpadding="0" cellspacing="0" height="600">
+  <tr>
+    <td valign="top" height="407" style="height:162px; background-image:url(images/header.jpg); background-repeat:no-repeat; padding-left:425px; padding-top:245px; padding-bottom:0px;"><script type="application/javascript">
+			var ndcountdown = new Countdown({
+							year	: 2014, 
+							month	: 1, 
+							day		: 18, 
+							hour	: 0,
+							ampm	: "am",
+							minute	: 0, 
+							rangeHi:"month",
+							width:350, 
+							height:60, 
+							second	: 0,
+									 // style:"flip", 
+									labels		: 	{
+						font 	: "Helvetica, Arial",
+						color	: "#ffffff",
+						//weight	: "normal",
+									},
+								 
+										numbers		: 	{
+													font 	: "Helvetica, Arial",
+													color	: "#ffffff",
+													bkgd	: "#000000",
+										}
+								
+										// <- no comma on last item!
+									});
+
+</script>
+</td>
+  </tr>
+  <tr>
+    <td><table width="1000" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td width="119" valign="top"><img src="images/link_bgs_r1_c1.jpg" width="119" height="79" alt="linkbg1" /></td>
+        <td width="312" valign="top"><a href="#settings" onClick="goTo('settings');return false" onmouseout="MM_swapImgRestore()" onmouseover="MM_swapImage('About ND','','images/about_nd_over.jpg',1)"><img src="images/about_nd.jpg" alt="About Nigeria Dialogue" name="About ND" width="312" height="79" border="0" id="About ND" /></a></td>
+        <td width="76" valign="top"><img src="images/link_bgs_r1_c3.jpg" width="76" height="79" alt="linkbg2" /></td>
+        <td width="187" valign="top"><a href="about_event.html" onmouseout="MM_swapImgRestore()" onmouseover="MM_swapImage('About Event','','images/about_event_over.jpg',1)"><img src="images/about_event.jpg" alt="About The Gala Night" name="About Event" width="187" height="79" border="0" id="About Event" /></a></td>
+        <td width="207" valign="top"><img src="images/link_bgs_r1_c5.jpg" width="159" height="79" alt="linksbg3" /></td>
+        <td width="202" valign="top"><a href="speakers.html" onmouseout="MM_swapImgRestore()" onmouseover="MM_swapImage('Guest Speakers','','images/speakers_over.jpg',1)"><img src="images/speakers.jpg" alt="Guest Speakers" name="Guest Speakers" width="193" height="79" border="0" id="Guest Speakers" /></a></td>
+        <td width="164" valign="top"><img src="images/link_bgs_r1_c7.jpg" width="154" height="79" alt="linksbg4" /></td>
+      </tr>
+    </table></td>
+  </tr>
+  <tr>
+    <td valign="top"><table width="1200" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td colspan="3" valign="top"><img src="images/middle_breaker.jpg" width="1200" height="20" alt="middle" /></td>
+        </tr>
+      <tr>
+        <td width="39%" height="70" valign="top"><img src="images/left_breaker.jpg" width="471" height="69" alt="left breaker" /></td>
+        <td width="16%" valign="top"><a href="register.html" onmouseout="MM_swapImgRestore()" onmouseover="MM_swapImage('Register','','images/register_over.jpg',1)"><img src="images/register.jpg" alt="Register for event" name="Register" width="256" height="69" border="0" id="Register" /></a></td>
+        <td width="45%" valign="top"><img src="images/right_breaker.jpg" width="473" height="69" alt="right breaker" /></td>
+      </tr>
+    </table></td>
+  </tr>
+  <tr>
+  <td valign="top" style="background:url(images/footer.jpg); background-repeat:no-repeat; height:146px; text-align: center; font-size: 12px;"><p>&nbsp;</p>
+  <p>&nbsp;</p>
+  <p>Nigeria Dialogue, All Rights Reserved, 2014.</p>
+  <p style="font-size:11px; color: #999"><a href="http://www.icebergng.com" target="_blank">Design: Iceberg Infotainment.</a></p></td></tr>
+</table>
+
+                
+                
+               
+             
+            </div>
+            <div id="settings">
+           
+                <div id="apDiv1" style="margin-top:0px;">  <table  style="width:1200px; margin-left:0px;" border="0" align="center" cellpadding="0" cellspacing="0" >
+    <tr>
+      <td width="226" rowspan="3" valign="top" ><a href="#home" onClick="goTo('home');return false"><img src="images/header2.jpg" alt="Nigeria Dialogue Gala Night Header" width="226" height="110" border="0" usemap="#Map" /></a></td>
+      <td width="770" valign="top" >&nbsp;</td>
+      <td width="194" rowspan="3" valign="top" >&nbsp;</td>
+    </tr>
+    <tr>
+      <td valign="top" >&nbsp;</td>
+    </tr>
+    <tr>
+      <td valign="top" >&nbsp;</td>
+    </tr>
+  </table></div>
+                <table width="800" border="0" align="center" cellpadding="0" cellspacing="0">
+      <tr>
+        <td style="height:100px;"></td>
+      </tr>
+      <tr>
+      
+        <td style="padding:15px; font-family: 'Source Sans Pro', sans-serif; text-align:left;">
+          <p><span class="bigheader">What is Nigeria-Dialogue?</span><br />
+          <br />
+          Nigeria-Dialogue is a hub for progressive intellectuals who intend to challenge systemic and institutional realities in Nigeria. ND is a platform for forward thinking Nigerians to proffer inputs into sustainable economic, infrastructural and social development through meaningful dialogues and measurable actions.<br />
+        </p>
+          <p><br />
+          </p>
+          <p><span class="bigheader">Who is behind Nigeria-Dialogue?</span><br />
+            <br />
+            We are a group of intelligent Nigerians, with a simple idea of bringing change to Nigeria – one person at a time. We are a mix of analytical and creative thinking individuals. We have a reasonable representation in London, New York, Lagos and Abuja.<br />
+          </p></td>
+      </tr>
+      <tr>
+        <td align="left" valign="top" style="padding:15px; padding-left:0px; font-family: 'Source Sans Pro', sans-serif;"><table width="100%" border="0" cellspacing="15" cellpadding="0">
+          <tr>
+            <td width="30%" align="left" valign="top" class="rounded21" style="padding:30px;"><span class="greenheader">Our Goals</span><br />
+              <br />
+              <span class="whitetext">Serve as a medium to aid in the effective transformation of Nigeria.</span></td>
+            <td width="30%" align="left" valign="top" class="rounded21" style="padding:30px;"><span class="greenheader">Our Vision</span><br />
+              <br />
+              <span class="whitetext">“To build a community of 40 million people who will usher in a civil and developed Nigeria”</span></td>
+            <td width="30%" align="left" valign="top" class="rounded21" style="padding:30px;"><span class="greenheader">Our Mission</span><br />
+              <br />
+              <span class="whitetext">Having conversations that will shape the future of our nation; bringing change to Nigeria – one person at a time!</span></td>
+          </tr>
+        </table></td>
+      </tr>
+      <tr>
+        <td align="left" valign="top" style="padding:15px; font-family: 'Source Sans Pro', sans-serif;"><p><span class="bigheader">Our Projects For 2014</span></span><br />
+          <br />
+        </p>
+          <p><strong>Gala Night</strong></p>
+          <p>The gala night is an opportunity for professionals, entrepreneurs and philanthropists to enjoy a night of entertainment, networking, fine dining, games and dancing while working to support a worthy cause. The event will raise awareness for Nigeria Dialogue projects and to raise funds to support them. </p>
+          <p>Nigeria Dialogue aims to plan fund raising events in 5 major cities across 3 continents namely London, Atlanta, New York, Houston and Lagos to support our 2014 events. We plan to continuously engage Nigerians in these cities through our Gala nights, Balls and Town hall meetings. </p>
+          <p><span class="doclink"><a href="../documents/New_School_Project.pdf" target="_blank" class="doclink">Get Detail About The Gala Night<em></em></a></span></p>
+          <p>&nbsp;</p>
+          <p><strong>Leadership For Next Generation</strong></p>
+          <p>This is our work in the community. We intend to visit 25 Cities with higher institutions in Nigeria and host ‘Mega conferences’ attracting 10,000 participants in each conference. This will give us a potential reach of 250,000 Nigerian undergraduates in two years. We will use this platform to teach soft skill, open up job opportunities in the market place, link innovators with venture capitals and encourage participation of first time voters in the process of nation building.<br />
+          </p>
+          <p><span class="doclink"><a href="../documents/Next_Generation.pdf" target="_blank" class="doclink">Download Leadership And The Next Generation white paper <em>(PDF 2.9 MB)</em></a></span></p>
+          <p>&nbsp;</p>
+          <p><strong>The New School Project</strong></p>
+          <p>This is a concerted effort of education enthusiasts to revamp the national Secondary and Tertiary curriculums and position Nigerian students for a global future. This is a joint venture between Nigeria Dialogue, the Ministry of Education and a number of key Stakeholders in the private sector.<br />
+          </p>
+          <p><span class="doclink"><a href="../documents/New_School_Project.pdf" target="_blank" class="doclink">Download New School Project white paper <em>(PDF 2.2 MB)</em></a></span></p>
+          <p><br />
+          </p>
+          <p><strong>The Politics Of Issues</strong></p>
+          <p>This is our audiovisual campaign to frame the important issues for the 2015 elections before the politicians begin to campaign.</p>
+          <p><span class="doclink"><a href="../documents/RNPL_Presentation.pdf" target="_blank" class="doclink">Download The Politics Of Issues white paper <em>(PDF 4.2 MB)</em></a></span></p></td>
+      </tr>
+      <tr>
+        <td align="left" valign="top" style="padding:15px; padding-left:0px; font-family: 'Source Sans Pro', sans-serif;"><p style="padding-left:10px;"><span class="bigheader">Organisational Structure</span><br />
+        </p>
+          <table width="100%" border="0" cellspacing="15" cellpadding="0">
+            <tr>
+              <td width="30%" align="left" valign="top" class="rounded13" style="padding:30px;"><span class="rounded121"><span class="greenheader">Board Of Trustees</span><br />
+                <br />
+                <span class="whitetext">Mr. Kola Karim – Shoreline Energy <br />
+                  <br />
+                  Senator Olurunnimbe Mamora</span></span></td>
+              <td width="30%" rowspan="2" align="left" valign="top" class="rounded13" style="padding:30px;"><span class="greenheader">Executive Team</span><br />
+                <br />
+                <span class="whitetext">Bankole Eniola – Chief Operations Officer <br />
+                  <br />
+                  Yemisi Onasanya – Programme Coordinator <br />
+                  <br />
+                  Muheez Bello – Legal and Governance <br />
+                  <br />
+                  Alfreda Fajuyitan – Executive Secretary</span></span></td>
+              <td width="30%" rowspan="3" align="left" valign="top" class="rounded13" style="padding:30px;"><p><span class="greenheader">Central Working Committee</span><br />
+                <br />
+                <span class="whitetext">Charles Iniwang – Finance and Planning </span></p>
+                <p><span class="whitetext">Babajide Yusuf – Strategy Development </span></p>
+                <p><span class="whitetext">Grace Banks-Eniola - Research and development </span></p>
+                <p><span class="whitetext">Adebayo Sowunmi – Communication and Brand Manager </span></p>
+                <p><span class="whitetext">Chioma Agwuegbo – Social Media manager </span></p>
+                <p><span class="whitetext">Adedayo Adeyeye – Leadership development </span></p>
+                <p><span class="whitetext">Wale Ojemuyiwa – Logistics </span></p>
+                <p><span class="whitetext">Tokunbo Sotinwa – Project Manager</span></p></td>
+            </tr>
+            <tr>
+              <td align="left" valign="top">&nbsp;</td>
+            </tr>
+            <tr>
+              <td align="left" valign="top">&nbsp;</td>
+              <td width="30%" align="left" valign="top">&nbsp;</td>
+            </tr>
+          </table>
+          <p style="padding-left:10px;"><br />
+          </p></td>
+      </tr>
+      <tr>
+        <td>&nbsp;</td>
+      </tr>
+    </table>
+                
+            </div>
+        </div>
+    </body>
+</html>
